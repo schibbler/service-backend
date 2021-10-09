@@ -1,0 +1,3 @@
+server:
+  logLevel: debug
+  logSrc: true
