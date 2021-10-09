@@ -18,7 +18,7 @@ jobs:
           github_token: ${{ secrets.github_token }}
           reporter: github-check
           locale: "US"
-          fail-on-error: true
+          fail_on_error: true
   yamllint:
     name: "Yamllint check"
     runs-on: ubuntu-20.04
@@ -30,7 +30,7 @@ jobs:
         with:
           github_token: ${{ secrets.github_token }}
           reporter: github-check
-          fail-on-error: true
+          fail_on_error: true
   deletct-secrets:
     name: "Detect secrets"
     runs-on: ubuntu-20.04
@@ -42,4 +42,4 @@ jobs:
         with:
           github_token: ${{ secrets.github_token }}
           reporter: github-check
-          fail-on-error: true
+          fail_on_error: true
