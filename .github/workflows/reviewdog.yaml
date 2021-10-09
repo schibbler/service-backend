@@ -31,15 +31,3 @@ jobs:
           github_token: ${{ secrets.github_token }}
           reporter: github-check
           fail_on_error: true
-  deletct-secrets:
-    name: "Detect secrets"
-    runs-on: ubuntu-20.04
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2.3.4
-      - name: Check yamllint
-        uses: reviewdog/action-detect-secrets@v0.6.2
-        with:
-          github_token: ${{ secrets.github_token }}
-          reporter: github-check
-          fail_on_error: true
