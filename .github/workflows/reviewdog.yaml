@@ -15,7 +15,7 @@ jobs:
         uses: reviewdog/action-misspell@v1.9.0
         with:
           github_token: ${{ secrets.github_token }}
-          reporter: gitub-check
+          reporter: github-check
           locale: "US"
   yamllint:
     name: "Yamllint check"
@@ -27,7 +27,7 @@ jobs:
         uses: reviewdog/action-yamllint@v1.4.0
         with:
           github_token: ${{ secrets.github_token }}
-          reporter: gitub-check
+          reporter: github-check
   deletct-secrets:
     name: "Detect secrets"
     runs-on: ubuntu-20.04
@@ -38,4 +38,4 @@ jobs:
         uses: reviewdog/action-detect-secrets@v0.6.2
         with:
           github_token: ${{ secrets.github_token }}
-          reporter: gitub-check
+          reporter: github-check

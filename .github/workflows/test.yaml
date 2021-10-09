@@ -6,7 +6,7 @@ on:
 
 jobs:
   install-dependencies:
-    name: Misspell check
+    name: Install dependencies
     runs-on: ubuntu-20.04
     container:
       image: node:12.22.6-alpine3.14
@@ -22,12 +22,6 @@ jobs:
             ${{ runner.os }}-node-
       - name: Install dependencies
         run: npm ci
-      - name: Upload Node Modules
-        uses: actions/upload-artifact@v2
-        with:
-          name: node_modules
-          path: node_modules
-          retention-days: 1
   lint:
     name: Lint
     runs-on: ubuntu-20.04
@@ -38,10 +32,15 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v1
-      - name: Download Node Modules
-        uses: actions/download-artifact@v2
+      - uses: actions/cache@v2
+        name: Cache dependencies
         with:
-          name: node_modules
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - name: Install dependencies
+        run: npm ci
       - name: Run Lint
         run: npm run lint
   prettier:
@@ -54,9 +53,14 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v1
-      - name: Download Node Modules
-        uses: actions/download-artifact@v2
+      - uses: actions/cache@v2
+        name: Cache dependencies
         with:
-          name: node_modules
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - name: Install dependencies
+        run: npm ci
       - name: Run Lint
         run: npm run prettier
