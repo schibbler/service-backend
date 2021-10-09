@@ -1,0 +1,62 @@
+name: "Test Backend"
+on:
+  push:
+    branches: ["**"]
+    tags-ignore: ["**"]
+
+jobs:
+  install-dependencies:
+    name: Misspell check
+    runs-on: ubuntu-20.04
+    container:
+      image: node:12.22.6-alpine3.14
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v1
+      - uses: actions/cache@v2
+        name: Cache dependencies
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - name: Install dependencies
+        run: npm ci
+      - name: Upload Node Modules
+        uses: actions/upload-artifact@v2
+        with:
+          name: node_modules
+          path: node_modules
+          retention-days: 1
+  lint:
+    name: Lint
+    runs-on: ubuntu-20.04
+    needs:
+      - install-dependencies
+    container:
+      image: node:12.22.6-alpine3.14
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v1
+      - name: Download Node Modules
+        uses: actions/download-artifact@v2
+        with:
+          name: node_modules
+      - name: Run Lint
+        run: npm run lint
+  prettier:
+    name: Prettier
+    runs-on: ubuntu-20.04
+    needs:
+      - install-dependencies
+    container:
+      image: node:12.22.6-alpine3.14
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v1
+      - name: Download Node Modules
+        uses: actions/download-artifact@v2
+        with:
+          name: node_modules
+      - name: Run Lint
+        run: npm run prettier
