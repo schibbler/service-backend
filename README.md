@@ -1,5 +1,8 @@
 # Schibbler Backend
 
+[![Eslint](https://github.com/schostin/schibbler-backend/actions/workflows/test.yaml/badge.svg)](https://github.com/schostin/schibbler-backend/actions/workflows/test.yaml)
+[![Reviewdog](https://github.com/schostin/schibbler-backend/actions/workflows/reviewdog.yaml/badge.svg)](https://github.com/schostin/schibbler-backend/actions/workflows/reviewdog.yaml)
+
 This repository shall serve the code for the schibbler backend API.
 
 ## Deployment
