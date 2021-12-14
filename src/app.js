@@ -3,6 +3,7 @@ const morgan = require("morgan")
 const json = require("morgan-json")
 
 const testRouter = require("./routes/test")
+const probesRouter = require("./routes/probes")
 
 const app = express()
 
@@ -19,5 +20,6 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
 app.use("/test", testRouter)
+app.use("/probes", probesRouter)
 
 module.exports = app

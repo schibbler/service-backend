@@ -1,8 +1,7 @@
 const bunyan = require("bunyan")
-const config = require("config")
 
-const logLevel = config.get("server.logLevel")
-const logSrc = config.get("server.logSrc")
+const logLevel = process.env.APP_LOG_LEVEL || "info"
+const logSrc = process.env.APP_LOG_SRC || false
 
 const logger = (name) => {
   const log = bunyan.createLogger({ name, level: logLevel, src: logSrc })

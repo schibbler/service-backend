@@ -12,3 +12,4 @@ jspm_packages/
 .env.test
 .env.production
 .envrc
+local*.yaml
