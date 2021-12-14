@@ -1,8 +1,8 @@
 #!/usr/bin/env node
-require("@google-cloud/trace-agent").start()
-require("@google-cloud/debug-agent").start({
-  serviceContext: { enableCanary: true },
-})
+// require("@google-cloud/trace-agent").start()
+// require("@google-cloud/debug-agent").start({
+//   serviceContext: { enableCanary: true },
+// })
 const app = require("../src/app")
 const http = require("http")
 const log = require("../src/logger")("schibbler-server")
