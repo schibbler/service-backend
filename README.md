@@ -2,6 +2,7 @@
 
 [![Eslint](https://github.com/schostin/schibbler-backend/actions/workflows/test.yaml/badge.svg)](https://github.com/schostin/schibbler-backend/actions/workflows/test.yaml)
 [![Reviewdog](https://github.com/schostin/schibbler-backend/actions/workflows/reviewdog.yaml/badge.svg)](https://github.com/schostin/schibbler-backend/actions/workflows/reviewdog.yaml)
+[![Known Vulnerabilities](https://snyk.io/test/github/schostin/schibbler-service-backend/badge.svg)](https://snyk.io/test/github/schostin/schibbler-service-backend)
 
 This repository shall serve the code for the schibbler backend API.
 
