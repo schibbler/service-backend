@@ -13,3 +13,4 @@ jspm_packages/
 .env.production
 .envrc
 local*.yaml
+.DS_Store
