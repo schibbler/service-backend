@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1.2
-FROM node:16.15.0-slim
+FROM node:16.17.0-slim
 
 WORKDIR /home/node
 COPY package.json package-lock.json ./
